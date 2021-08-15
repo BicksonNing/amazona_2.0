@@ -80,8 +80,8 @@ const Header = () => {
 
       {/* small screen search bar */}
       {/* Search bar */}
-      <div className='bg-amazon_blue p-3'>
-        <div className='flex md:hidden flex-grow bg-yellow-400 hover:bg-yellow-500 rounded-md h-10 cursor-pointer'>
+      <div className='bg-amazon_blue p-3 flex md:hidden'>
+        <div className='flex flex-grow bg-yellow-400 hover:bg-yellow-500 rounded-md h-10 cursor-pointer'>
           <input
             type='text'
             className='rounded-l-md p-2 flex-grow focus:outline-none'
