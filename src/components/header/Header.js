@@ -78,6 +78,22 @@ const Header = () => {
         </div>
       </div>
 
+      {/* small screen search bar */}
+      {/* Search bar */}
+      <div className='bg-amazon_blue p-3'>
+        <div className='flex md:hidden flex-grow bg-yellow-400 hover:bg-yellow-500 rounded-md h-10 cursor-pointer'>
+          <input
+            type='text'
+            className='rounded-l-md p-2 flex-grow focus:outline-none'
+            placeholder='Search Amazon.in'
+          />
+          <SearchIcon
+            className='p-2.5'
+            onClick={(e) => console.log("Search")}
+          />
+        </div>
+      </div>
+
       {/* bottom nav */}
       <div className='flex items-center bg-amazon_blue-light text-white space-x-3 p-2 pl-6 whitespace-nowrap text-sm'>
         <p className='link flex items-center'>
@@ -85,8 +101,8 @@ const Header = () => {
         </p>
         <p className='link'>Best Sellers</p>
         <p className='link'>AmazonBasics</p>
-        <p className='link'>Customer Service</p>
-        <p className='link hidden md:inline-flex'>Amazon Business</p>
+        <p className='link hidden sm:inline-flex'>Customer Service</p>
+        <p className='link hidden sm:inline-flex'>Amazon Business</p>
         <p className='link hidden md:inline-flex'>Home Improvement</p>
         <p className='link hidden md:inline-flex'>Gift Ideas</p>
         <p className='link hidden lg:inline-flex'>Pet Supplies</p>
