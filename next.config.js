@@ -4,6 +4,7 @@ module.exports = {
       "links.papareact.com",
       "fakestoreapi.com",
       "upload.wikimedia.org",
+      "images-eu.ssl-images-amazon.com",
     ],
   },
 };

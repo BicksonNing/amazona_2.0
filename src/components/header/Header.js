@@ -7,7 +7,16 @@ import {
   ChevronDownIcon,
 } from "@heroicons/react/outline";
 
+import { signIn, signOut, useSession } from "next-auth/client";
+import { useRouter } from "next/dist/client/router";
+import { useSelector } from "react-redux";
+import { selectItems } from "../../slices/basketSlice";
+
 const Header = () => {
+  const [session] = useSession();
+  const router = useRouter();
+  const items = useSelector(selectItems);
+
   return (
     <header>
       {/* top nav */}
@@ -20,6 +29,7 @@ const Header = () => {
             height={40}
             objectFit='contain'
             className='cursor-pointer'
+            onClick={() => router.push("/")}
           />
         </div>
 
@@ -35,10 +45,13 @@ const Header = () => {
 
         {/* Search bar */}
 
-        <div className='hidden md:flex flex-grow bg-yellow-400 hover:bg-yellow-500 rounded-md h-10 cursor-pointer'>
+        <div className='hidden md:flex flex-grow  bg-yellow-400 hover:bg-yellow-500 rounded-md h-10 cursor-pointer'>
+          <div className='h-10 px-4 flex items-center bg-gray-200 rounded-l-md hover:bg-gray-300'>
+            <p>All</p>
+          </div>
           <input
             type='text'
-            className='rounded-l-md p-2 flex-grow focus:outline-none'
+            className='p-2 flex-grow focus:outline-none'
             placeholder='Search Amazon.in'
           />
           <SearchIcon
@@ -59,20 +72,25 @@ const Header = () => {
             />
             <ChevronDownIcon className='ml-1 h-5' />
           </div>
-          <div className=' link'>
-            <p className='text-xs '>Hello, Bickson</p>
+          <div className='link' onClick={!session ? signIn : signOut}>
+            <p className='text-xs '>
+              {session ? `Hello, ${session.user.name}` : "Sign In"}
+            </p>
             <p className='font-bold text-xs md:text-sm'>Account & Lists</p>
           </div>
           <div className=' link hidden lg:block'>
             <p className='text-xs'>Returns</p>
             <p className='font-bold md:text-sm'>& Orders</p>
           </div>
-          <div className='link flex items-end relative'>
+          <div
+            className='link flex items-end relative'
+            onClick={() => router.push("/checkout")}
+          >
             <ShoppingCartIcon className='h-8 md:h-10' />
             <p className='hidden md:inline font-bold md:text-sm'>Cart</p>
 
             <span className='absolute top-0 right-0 md:right-6 w-4 h-4 bg-yellow-500 text-center rounded-full font-bold text-xs'>
-              0
+              {items.length}
             </span>
           </div>
         </div>
@@ -82,9 +100,12 @@ const Header = () => {
       {/* Search bar */}
       <div className='bg-amazon_blue px-3 pb-3 flex md:hidden'>
         <div className='flex flex-grow bg-yellow-400 hover:bg-yellow-500 rounded-md h-10 cursor-pointer'>
+          <div className='h-10 px-4 flex items-center bg-gray-200 rounded-l-md hover:bg-gray-300'>
+            <p>All</p>
+          </div>
           <input
             type='text'
-            className='rounded-l-md p-2 flex-grow focus:outline-none'
+            className='p-2 flex-grow focus:outline-none'
             placeholder='Search Amazon.in'
           />
           <SearchIcon
