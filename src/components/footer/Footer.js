@@ -5,7 +5,10 @@ function Footer() {
   return (
     <div>
       {/* Back to Top */}
-      <div className='bg-gray-700 py-2 text-center text-white hover:bg-gray-800 cursor-pointer'>
+      <div
+        className='bg-gray-700 py-2 text-center text-white hover:bg-gray-800 cursor-pointer'
+        onClick={() => window.scrollTo({ top: 0, left: 0, behavior: "smooth" })}
+      >
         <p>Back to top</p>
       </div>
 
