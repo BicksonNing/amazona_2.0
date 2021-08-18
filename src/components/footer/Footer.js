@@ -3,7 +3,7 @@ import Image from "next/image";
 
 function Footer() {
   return (
-    <div>
+    <div className='bottom-0'>
       {/* Back to Top */}
       <div
         className='bg-gray-700 py-2 text-center text-white hover:bg-gray-800 cursor-pointer'
