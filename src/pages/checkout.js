@@ -6,7 +6,7 @@ import { selectItems, selectTotal } from "../slices/basketSlice";
 import CheckOutProduct from "../components/cart/CheckOutProduct";
 import Currency from "react-currency-formatter-v2";
 import { CheckCircleIcon } from "@heroicons/react/solid";
-import { useSession } from "next-auth/client";
+import { getSession, useSession } from "next-auth/client";
 import Footer from "../components/footer/Footer";
 import { loadStripe } from "@stripe/stripe-js";
 import axios from "axios";
@@ -176,3 +176,13 @@ function Checkout() {
 }
 
 export default Checkout;
+
+export async function getServerSideProps(context) {
+  const session = await getSession(context);
+
+  return {
+    props: {
+      session,
+    },
+  };
+}

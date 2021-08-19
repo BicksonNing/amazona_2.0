@@ -78,7 +78,10 @@ const Header = () => {
             </p>
             <p className='font-bold text-xs md:text-sm'>Account & Lists</p>
           </div>
-          <div className=' link hidden lg:block'>
+          <div
+            className=' link hidden lg:block'
+            onClick={() => router.push("/orders")}
+          >
             <p className='text-xs'>Returns</p>
             <p className='font-bold md:text-sm'>& Orders</p>
           </div>
